@@ -144,7 +144,7 @@ class Ultimate_File_Sharing_Public {
                 'value_remember' => false
             );
             ob_start();
-            echo __('Autentication is required. Please login','ultimate-file-sharing');
+            echo esc_html(__('Autentication is required. Please login','ultimate-file-sharing'));
             wp_login_form($args);
             $html = ob_get_clean();
             return $html;
@@ -178,7 +178,7 @@ class Ultimate_File_Sharing_Public {
             ?>
             <tr>
                 <td><a href="<?php echo esc_url($file['url_secure']); ?>" target="_blank"><?php echo esc_html($file['title']); ?></a></td>
-                <td><?php echo $file['created_on']?></td>
+                <td><?php echo esc_html($file['created_on'])?></td>
                 <td><a href="<?php echo esc_url($file['url_secure']); ?>" target="_blank"> <?php echo esc_html(__('Download','ultimate-file-sharing')); ?></a></td>
             </tr>
             <?php
@@ -390,7 +390,7 @@ class Ultimate_File_Sharing_Public {
      */
     public function ufs_block_direct_access(){
         if(is_null($_SERVER['HTTP_REFERER'])){
-            echo __('Direct Access is not allowed','ultimate-file-sharing');
+            echo esc_html(__('Direct Access is not allowed','ultimate-file-sharing'));
             exit;
         }
     }

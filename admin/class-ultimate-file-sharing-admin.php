@@ -109,6 +109,7 @@ class Ultimate_File_Sharing_Admin
      *
      * @param $mime_types
      * @return mixed
+     * @since 1.0.0
      */
     public function ufs_register_mime_types($mime_types){
 
@@ -126,6 +127,8 @@ class Ultimate_File_Sharing_Admin
 
     /**
      * Funzione responsabile della creazione dei metabox che visualizzo nel post type Downloads
+     *
+     * @since 1.0.0
      */
     public function ufs_register_meta_boxes($meta_boxes)
     {
@@ -213,6 +216,7 @@ class Ultimate_File_Sharing_Admin
     /**
      * Get the user list and order it on array
      * @return array
+     * @since 1.0.0
      */
     public function get_users_list()
     {
@@ -253,6 +257,7 @@ class Ultimate_File_Sharing_Admin
      * Richiedo i gruppi presenti e li metto in un array
      *
      * @return array Array of groups
+     * @since 1.0.0
      */
     public function get_groups_list(){
         global $wpdb;
@@ -281,6 +286,8 @@ class Ultimate_File_Sharing_Admin
      *
      * This function is hooked into tgmpa_init, which is fired within the
      * TGM_Plugin_Activation class constructor.
+     *
+     * @since 1.0.0
      */
     public function ufs_register_required_plugins()
     {
@@ -360,6 +367,7 @@ class Ultimate_File_Sharing_Admin
      * Questa funziona restituisce lo storico dei downloads
      *
      * @return string
+     * @since 1.0.0
      */
     public function ufs_display_download_details()
     {
@@ -389,18 +397,11 @@ class Ultimate_File_Sharing_Admin
     }
 
     /**
-     * Questa funzione salva il valore ufscompany al momento dell'update dei meta utente
-     *
-     * @return bool
+     * @param $redirect_to
+     * @param $request
+     * @param $user
+     * @return mixed
      */
-    public function ufs_save_extra_user_page_fields($user_id){
-        if ( !current_user_can( 'edit_user', $user_id ) ) {
-            return false;
-        }
-        update_user_meta( $user_id, 'ufscompany', $_POST['ufscompany'] );
-        return true;
-    }
-
     public function ufs_disable_dashboard($redirect_to, $request, $user){
         //is there a user to check?
     if ( isset( $user->roles ) && is_array( $user->roles ) ) {

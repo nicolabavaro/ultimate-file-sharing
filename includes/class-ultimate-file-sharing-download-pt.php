@@ -106,11 +106,11 @@ class UFS_Download_PostType{
         // Post type table column content code here
         switch ( $column ) {
             case 'ufs_total_downloads' :
-                echo get_post_meta( $post_id , '_ufs_download_counter' , true );
+                echo esc_html(get_post_meta( $post_id , '_ufs_download_counter' , true ));
                 break;
             case 'ufs_users' :
                 $users_id_array = get_post_meta( $post_id , 'allowed_users' , false );
-                $this->display_alloed_user_column_data($users_id_array);
+                $this->display_allowed_user_column_data($users_id_array);
                 break;
             case 'ufs_groups' :
                 $group_id_array = get_post_meta( $post_id , 'allowed_groups' , false );
@@ -119,7 +119,7 @@ class UFS_Download_PostType{
         }
     }
 
-    public function display_alloed_user_column_data($users_id_array){
+    public function display_allowed_user_column_data($users_id_array){
         $k = count($users_id_array );
         $i = 0;
         ob_start();
@@ -131,7 +131,7 @@ class UFS_Download_PostType{
                 $sep = ',';
             }
             $user = get_userdata($user );
-            echo '<span class="ufs-user-column">'.$user->display_name.$sep.'</span> ';
+            echo '<span class="ufs-user-column">'.esc_html($user->display_name.$sep).'</span> ';
         }
         $out = ob_get_clean();
         echo $out;

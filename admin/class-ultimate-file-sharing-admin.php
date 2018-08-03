@@ -266,7 +266,7 @@ class Ultimate_File_Sharing_Admin
         if(class_exists('Groups_Group')){
             $groups_table = _groups_get_tablename( 'group' );
 
-            $group_array =  $wpdb->get_results($wpdb->prepare( "SELECT * FROM $groups_table ORDER BY name" ));
+            $group_array =  $wpdb->get_results( "SELECT * FROM $groups_table ORDER BY name" );
 
             $out = [];
 
